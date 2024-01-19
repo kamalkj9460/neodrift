@@ -1,0 +1,89 @@
+<div class="make-model">
+  <div class="cussearch">
+    <label for="">Make</label>
+    <select id="groups" class="groups" data-sort-order="1">
+      <option value="SHOW" data-href="disabled">Select Make</option>
+      {%- for block in section.blocks -%}
+      <option value="{{ block.settings.make }}" data-model="{{ block.settings.model }}" data-url="{{ block.settings.modelurl }}">{{ block.settings.make }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="cussearch">
+    <label for="">Model</label>
+    <select id="sub_groups" class="sub_groups" data-sort-order="1"  onchange="myFunction()">
+      <option data-group="SHOW" value="#" data-href="disabled">Select Model</option>
+     </select>
+  </div>
+  <div class="cussearch">
+    <a id="cushref" class="cushref" target="_self" href="javascript:void(0);" disabled>Search</a>
+  </div>
+</div>
+<script>
+        function myFunction() {
+          document.getElementById("cushref").href="javascript:void(0);"; 
+          var x = document.getElementById("sub_groups").value;
+          var href = x.trim();
+          if(href){
+            var you = document.getElementById("cushref");
+            you.removeAttribute("disabled");
+            you.setAttribute("target","_self");
+            you.href=href; 
+          }
+          if(!href){  
+             var you1 = document.getElementById("cushref");
+             you1.setAttribute("disabled","true");
+             you1.href="javascript:void(0);"; 
+          }
+        }
+    </script>
+
+
+{% schema %}
+  {
+    "name": "Make Model",
+    "settings": [
+      {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Make and Model"
+    }  
+    ],
+    "blocks": [
+    {
+      "type": "text",
+      "name": "make and model",
+      "settings": [
+        {
+          "type": "text",
+          "id": "make",
+          "label": "Make"
+        },
+        {
+          "type": "text",
+          "id": "model",
+          "label": "Model"
+        },
+        {
+          "type": "text",
+          "id": "modelurl",
+          "label": "Model URL"
+        }
+      ]
+    }
+  ],
+    "presets": [
+    {
+      "category": "Make Model",
+      "name": "Add Model",
+      "settings": {}
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

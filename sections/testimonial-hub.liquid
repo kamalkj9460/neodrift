@@ -1,0 +1,110 @@
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<section class="section section--tight section--testimonial" data-section-id="{{ section.id }}" data-section-type="text-with-icons" style="background-color:{{ section.settings.bg_color }};">
+  <div class="container container--flush">
+    <div class="test-heading"><h2>{{ section.settings.main_heading }}</h2></div>
+    <div class="testimonial-box" data-flickity='{ "cellAlign": "left", "contain": true,"pageDots": false,"draggable": true}'>
+      {%- for block in section.blocks -%}
+        <div class="testimonial-hub">
+          <div class="test-box" style="background-color:{{ block.settings.box_color }};">
+            <div class="test-star">
+              <img src="{{ block.settings.review_star | img_url:'100x19' }}" width="100%" height="100%">
+            </div>
+            <div class="test-name">
+              {{ block.settings.review_name }}
+            </div>
+            <div class="test-text">
+              {{ block.settings.review_text }}
+            </div>
+          </div>
+          <div class="test-bottom-box">
+            <div class="test-left">
+              <div class="test-image">
+                <img src="{{ block.settings.review_img | img_url:'grande' }}" width="100%" height="100%">
+              </div>
+            </div>
+            <div class="test-right">
+              <div class="test-cname">
+                {{ block.settings.review_name }}
+              </div>
+              <div class="test-publish">
+                {{ block.settings.review_date }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonial Hub",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "review",
+      "settings": [
+        {
+          "type": "color",
+          "id": "box_color",
+          "label": "Box Background Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_star",
+          "label": "Customer Rating"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_img",
+          "label": "Customer Image"
+        },
+        {
+          "type": "text",
+          "id": "review_name",
+          "label": "Customer Name"
+        },
+        {
+          "type": "richtext",
+          "id": "review_text",
+          "label": "Review Text"
+        },
+        {
+          "type": "richtext",
+          "id": "review_date",
+          "label": "Review Published"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Testimonial-Hub",
+      "blocks": [
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
