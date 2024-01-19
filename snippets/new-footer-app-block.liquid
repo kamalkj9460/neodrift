@@ -1,0 +1,178 @@
+<div id="shopify-block-18228966181090706294" class="shopify-block shopify-app-block">
+    <script data-w3-type="module" type="lazyload_int" data-src="https://cdn.shopify.com/extensions/b1f9f5d2-e22f-433d-8d01-c106a53ee206/selleasy-7/assets/lb-upsell-components.esm.js"></script>
+</div>
+<div id="shopify-block-914574027208035924" class="shopify-block shopify-app-block camouflage-hide-oos">
+    <style></style>
+    <!-- BEGIN app snippet: camouflage-data -->
+    <script type="lazyload_int">
+        (function() {
+            if(!window.loaded_script_hoos_obj) {
+                window.loaded_script_hoos_obj = {};
+            }
+            window.hoosObj = null; // resetting value for quick views        
+            window.hide_oos_enabled = "codecrux hide oos";                    
+            window.current_date_time = "Wednesday, January 17, 2024  9:11 pm +0530"    
+            const codecrux_settings = {"selector_type":"","theme_name":"warehouse","other_theme_name":"","unavailable_class":"","hide_oos_variants":true,"strikethrough_oos_variants":false,"hide_oos_check_qty":false,"custom_js":"{\n    \"hide_oos_query_selectors\": {\n        \"selector_type\": \"radio\",\n        \"input_selector\": \"radio\",\n        \"field_selector\": \".product-form__variants .product-form__option[data-selector-type]\",\n        \"mainContainer\": \"body\"\n    },\n    \"hide_oos_extras\": {\n        \"target_parent_element\": true,\n        \"disabled\": false\n    }\n}","other_file_name":"2ab921a-a-type.js","always_hide_show_field":"variant_title"} || {};
+            const requested_page = {
+                  "design_mode": "{{ request.design_mode }}",
+                  "host": "{{ request.host }}",
+                  "locale": "{{ request.locale }}",
+                  "origin": "{{ request.origin }}",
+                  "page_type": "{{ request.page_type }}",
+                  "path": "{{ request.path }}",
+                  "visual_preview_mode": "{{ request.visual_preview_mode }}"
+            }
+            const hide_variants_options_arr = '';
+            let hide_oos_extras = window.hide_oos_extras || null;
+            let hide_oos_query_selectors = window.hide_oos_query_selectors || null;
+            let custom_js = {}; // custom_js is custom_json configuration
+            if (codecrux_settings && codecrux_settings.custom_js) {
+                custom_js = codecrux_settings.custom_js || '';
+                if (typeof custom_js === "string") {
+                    try {
+                        custom_js = JSON.parse(custom_js) || {};
+                    } catch(error) {
+                        console.error(error);
+                    }
+                }    
+                // giving priority to window object
+                if (typeof custom_js === "object") {
+                    custom_js.hide_oos_extras = window.hide_oos_extras || custom_js.hide_oos_extras;
+                    custom_js.hide_oos_query_selectors = window.hide_oos_query_selectors || custom_js.hide_oos_query_selectors;
+                    custom_js.product_grid = window.hide_oos_product_grid || custom_js.product_grid;
+                    custom_js.quick_view = window.hide_oos_quick_view || custom_js.quick_view;
+                    custom_js.featured_product = window.hide_oos_featured_product || custom_js.featured_product;
+                    custom_js.image_hide = window.hide_oos_image_hide || custom_js.image_hide;
+                }
+            }
+            window.hide_oos_t_settings = {"theme_name":"warehouse","selector_type":"swatch_and_dropdown_mixed","hide_oos_variants":true,"strikethrough_oos_variants":true,"other_file_name":"","reverse_options":false} || {};    
+            delete codecrux_settings.custom_css;
+            delete codecrux_settings.custom_js;
+            delete codecrux_settings.global_custom_css;    
+            window.hide_oos_m_settings = {
+                ...codecrux_settings,
+                variant_action: ""
+            }    
+            window.camouflage_global_config = {
+                hide_oos_m_settings: hide_oos_m_settings,
+                hide_oos_t_settings: hide_oos_t_settings,
+                hide_variants_options_arr: hide_variants_options_arr,
+                key: "",
+                request: requested_page,
+                logLevel: "fakeLog",
+                ...custom_js
+            };    
+            console.fakeLog = () => {};
+        })();
+    </script>
+    <!-- END app snippet -->
+    <!-- BEGIN app snippet: hide-oos-variants-snippet -->
+    <style>
+        option.hide-oos-disable {
+            color: grey;
+        }
+        .price--sold-out .price__badge--sold-out, .hide-oos-disable, .hide_oos--parent-hidden, variant-swatch-king ul li.swatch-item-unavailable {
+            display: none !important;
+        }          
+        . {
+            display: none !important;
+        }            
+        .pf-option-swatches {
+            gap: 0!important;
+        }
+        .pf-option-swatches .pf-vs-label {
+            margin-right: 16px;
+        }                    
+        label.swatches__form--label img.swatches__sold-out--image.crossed-out {
+            display: none;
+        }
+        .variant-wrapper fieldset.variant-input-wrap label.disabled {
+            color: inherit;
+        }
+        .variant-wrapper fieldset.variant-input-wrap label.disabled:after {
+            display: none;
+        }  
+        .camouflage-special-swatch-A, .camouflage-special-swatch-B {
+            position: relative;
+            text-decoration: none !important;
+            overflow: hidden;
+        }
+        .camouflage-special-swatch-B.hide-oos-disable, .camouflage-special-swatch-A.hide-oos-disable, .camouflage-special-swatch-A.hide-oos-disable > *, .camouflage-special-swatch-B.hide-oos-disable > * {
+            text-decoration: none !important;
+        }
+        .camouflage-special-swatch-A:after, .camouflage-special-swatch-B:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;            
+            background: linear-gradient(to bottom right,transparent calc(50% - 1px),#000 50%,transparent calc(50% + 1px)) no-repeat;
+            opacity: 1;            
+        }    
+        .HorizontalList__Item label.camouflage-special-swatch-A {
+            overflow: initial;
+        }
+        li.HorizontalList__Item.camouflage-special-swatch-A, li.HorizontalList__Item label.camouflage-special-swatch-A {
+            overflow: initial;
+        }
+        li.HorizontalList__Item.camouflage-special-swatch-A:after {
+            content: initial;
+        }
+    </style>
+    <script type="lazyload_int" data-src="https://cdn.shopify.com/extensions/60f3d63f-129c-4365-a26c-cf969a29191d/2.1.22/assets/2ab921a-a-type.js" class="camouflage-script" data-producthandle="{{ product.handle }}" data-productid="{{ product.id }}"></script>
+    <script class="camouflage-script" data-producthandle="{{ product.handle }}" data-productid="{{ product.id }}" type="lazyload_int">
+        (function() {
+            const camouflage_product = {{ product | json }}
+            if (!camouflage_product) return;            
+            const product_metafields = {} || {};
+            const selected_or_first_available_variant_id = "{{ product.selected_or_first_available_variant.id }}"; // TODO: convert to params
+            camouflage_product.product_images_with_id = [{"image_id": "35796703051951","media_id": "","url": "products/bmw_1_series_d946a275-2082-42b6-99f3-04790fcb4808.jpg"},{"image_id": "35796703314095","media_id": "","url": "products/2_fc887b62-3fcd-41d1-9595-d7f648b5d721.jpg"},{"image_id": "35796703576239","media_id": "","url": "products/3_86e6b6df-adec-420a-89e0-6fe62c3e36d7.jpg"},{"image_id": "36616348696751","media_id": "","url": "files/4_eaec3eef-adcd-4a72-9e7a-0848337f964a.jpg"},{"image_id": "35796704133295","media_id": "","url": "products/5_204a5f89-1bd0-4636-8e0f-395a9c6a0d49.jpg"},{"image_id": "35796704460975","media_id": "","url": "products/6_6752d4e1-60bb-40a7-8da8-91a1c0445861.jpg"},{"image_id": "35796704788655","media_id": "","url": "products/7_582380d9-3331-4b3f-b9fe-70edd6b361c4.jpg"},{"image_id": "35796705181871","media_id": "","url": "products/bmw_1_series_a72c63f8-2bb5-44ca-9a37-89743d75f107.jpg"},{"image_id": "35796706558127","media_id": "","url": "products/2_34db30ef-3a66-4515-9f33-794962b664e8.jpg"},{"image_id": "35796706787503","media_id": "","url": "products/3_e28c3013-87f2-442b-80bc-40a260b41aaa.jpg"},{"image_id": "35796707115183","media_id": "","url": "products/4_32c12115-56fb-4d76-8263-435c1cfbcf6b.jpg"},{"image_id": "35796707246255","media_id": "","url": "products/5_ccbab823-6a22-445a-ac1c-53001a58f894.jpg"},{"image_id": "35796707737775","media_id": "","url": "products/6_66d83cb9-3c45-4bdf-984b-26325d34097e.jpg"},{"image_id": "35796708196527","media_id": "","url": "products/7_2606a982-a088-42b4-a482-d56c212e230a.jpg"},{"image_id": "35796709081263","media_id": "","url": "products/bmw_1_series_b54016c3-c33d-48ad-a606-a2b7ade8e97c.jpg"},{"image_id": "35796709507247","media_id": "","url": "products/2_8e7e2ebd-8b11-4bb1-8130-fd0196d8920b.jpg"},{"image_id": "35796709802159","media_id": "","url": "products/3_1_8456986d-dba6-41b5-b115-824fef4a9d05.jpg"},{"image_id": "35796710064303","media_id": "","url": "products/4_d339fe0e-d7c3-4ac5-a670-d8d53476790d.jpg"},{"image_id": "35796710424751","media_id": "","url": "products/5_e3335f14-4a21-4a58-9ac0-2e2867c7bf26.jpg"},{"image_id": "35796711276719","media_id": "","url": "products/6_ecc8d0e9-4bcf-428d-952f-46d2926bc766.jpg"},{"image_id": "35796711702703","media_id": "","url": "products/7_e0eeacd9-6b25-43fa-9a42-ac2073db1401.jpg"},{"image_id": "35796711932079","media_id": "","url": "products/bmw_1_series_8715dc98-6b6b-4a9b-ab51-79bf5ee384e1.jpg"},{"image_id": "35796712063151","media_id": "","url": "products/2_24d420c7-9922-4585-bfea-405c53c9008e.jpg"},{"image_id": "35796712161455","media_id": "","url": "products/3_1_f1c9d262-589c-4626-b059-dba5183313bd.jpg"},{"image_id": "35796712554671","media_id": "","url": "products/4_2f39e986-7b9b-4f9b-930f-5482e7437c8f.jpg"},{"image_id": "35796712718511","media_id": "","url": "products/5_9e87ae6e-0ba6-4bdb-a2ee-40414b02faa9.jpg"},{"image_id": "35796712849583","media_id": "","url": "products/6_2aaa1fd1-f048-47ee-83a8-53832af4ea21.jpg"},{"image_id": "35796713013423","media_id": "","url": "products/7_972c080a-4732-4640-8830-e45a47b85795.jpg"},{"image_id": "35796713144495","media_id": "","url": "products/bmw_1_series_b7947b18-2c8f-41e2-ac16-087b34ead302.jpg"},{"image_id": "35796713308335","media_id": "","url": "products/2_faa83bb1-3c69-42c2-9bd6-ed8539e29e36.jpg"},{"image_id": "35796714094767","media_id": "","url": "products/3_b4f503a5-0695-4ecd-8a1f-8a0e07cd3a09.jpg"},{"image_id": "35796714291375","media_id": "","url": "products/4_37aaa305-a7f2-4fea-a5c9-80d2cccee45e.jpg"},{"image_id": "35796715045039","media_id": "","url": "products/5_4d36ef03-7aa5-440c-9130-9455477a0d9f.jpg"},{"image_id": "35796715503791","media_id": "","url": "products/6_4238fd4a-5bf0-471e-98a2-f284e8520a5e.jpg"},{"image_id": "35796715667631","media_id": "","url": "products/7_009dc4cc-a1a5-4f66-a8a9-45f6d089b97c.jpg"},{"image_id": "35796716028079","media_id": "","url": "products/8a61a592-9594-4abd-9976-e7e070c5ed48.jpg"},{"image_id": "35796717011119","media_id": "","url": "products/NT_SUV_ANGLES_50a4c803-8da7-42d4-b97a-5e1981f40271.jpg"},{"image_id": "35796717797551","media_id": "","url": "products/AMAZON_NT_SUV_IMAGE_3_fb34a805-b103-432c-a8d5-6e9d9314b588.jpg"},{"image_id": "35796718223535","media_id": "","url": "products/AMAZON_NT_SUV_IMAGE_4_dd88d11b-0a5c-413f-af22-b286e01f6b28.jpg"},{"image_id": "35796718715055","media_id": "","url": "products/AMAZON_NT_SUV_IMAGE_5_5bddd331-4446-4b60-87da-5cd120f94403.jpg"},{"image_id": "35796718846127","media_id": "","url": "products/NewStorageBag_NT_16c89b92-9069-4943-9b99-98865c6cf89b.jpg"},{"image_id": "35796719272111","media_id": "","url": "products/Moontime-3_41eaa43f-034d-4647-81ca-ef6ec47b48ff.jpg"},{"image_id": "35796720353455","media_id": "","url": "products/BMW_1_SERIES_47677730-2e73-4e78-8df7-82814538a021.jpg"},{"image_id": "35796720418991","media_id": "","url": "products/AMAZON_CT_IMAGE_2_dd219362-60aa-4a34-9ea9-b7d11a044ed6.jpg"},{"image_id": "35796720681135","media_id": "","url": "products/AMAZON_CT_IMAGE_3_60b47034-5a2a-4d17-803b-cb6459a33cff.jpg"},{"image_id": "35796720844975","media_id": "","url": "products/AMAZON_CT_IMAGE_5_b29e541b-7a5d-48ce-b979-98ad111a282f.jpg"},{"image_id": "35796721074351","media_id": "","url": "products/NewStorageBag_CT_556a0f70-04c4-4204-bbae-daf56222be21.jpg"},{"image_id": "35796721303727","media_id": "","url": "products/Moontime-32342_0743a193-8293-46f2-be81-0869beac6d0e.jpg"},{"image_id": "35796721434799","media_id": "","url": "products/bmw_1_series_4d827308-9267-4d3c-9a1d-44dc6d6e655e.jpg"},{"image_id": "35796721598639","media_id": "","url": "products/2_3bba2b4b-31a4-4229-97dd-76289897d877.jpg"},{"image_id": "35796721828015","media_id": "","url": "products/3_e17d4594-e879-4ec4-b387-c46274335bff.jpg"},{"image_id": "35796722417839","media_id": "","url": "products/AMAZON_CT_IMAGE_4_28dc2dda-7779-4a58-95da-3856661dda14.jpg"},{"image_id": "35796722548911","media_id": "","url": "products/5_29bd2149-8c29-4360-94db-e6252767ee02.jpg"},{"image_id": "35796723138735","media_id": "","url": "products/Moontime-4_5f62a546-c0e8-4235-82d4-3d8c6da1266a.jpg"},{"image_id": "35810956968111","media_id": "","url": "products/a3d516d8-143d-49a1-9449-680214c2b13c_9dcf801a-3efa-4a14-b7ab-ac3900017b37.jpg"},{"image_id": "35811127296175","media_id": "","url": "products/Maribach_1_P-HB_be634cef-61a5-4288-971f-b6897c69b33b.jpg"},{"image_id": "35811197321391","media_id": "","url": "products/Maribach_2_09c18510-75f9-4300-8072-e64278424ba8.jpg"},{"image_id": "35811197714607","media_id": "","url": "products/Maribach_3_3288230a-1d99-452b-b393-f0b9abdc09be.jpg"},{"image_id": "35930711294127","media_id": "","url": "products/MAR-BLK-1_ce1a4b24-723e-40de-b8cc-7de550ca6979.jpg"},{"image_id": "35930711326895","media_id": "","url": "products/MAR-BLK-2_90f5e8f1-f029-4935-b063-3158c35258d5.jpg"},{"image_id": "35930711392431","media_id": "","url": "products/MAR-BLK-3_89bee5a1-6237-426d-870f-961e33f97d0c.jpg"},{"image_id": "35930711457967","media_id": "","url": "products/MAR-BLK-4_0663f7bd-da55-4cbb-962a-e3eeed187c54.jpg"},{"image_id": "35930711523503","media_id": "","url": "products/MAR-BLK-5_4d78e847-adb3-4589-8b54-8d795d9bf259.jpg"},{"image_id": "35930711556271","media_id": "","url": "products/MAR-BLK-6_a07823c3-6036-4cd3-a1a2-86869ce4f6ef.jpg"},{"image_id": "35930711621807","media_id": "","url": "products/MAR-BLK-7_abd2b585-31eb-48ba-b2de-2f9104065c1f.jpg"},{"image_id": "35951134376111","media_id": "","url": "products/SBL-BLA-1_f24fcfba-91cd-48e1-b1f4-739cd9651b71.jpg"},{"image_id": "35951134539951","media_id": "","url": "products/SBL-BLA-2_e1254005-aea4-4763-a83c-06f7fdce8c65.jpg"},{"image_id": "35951134703791","media_id": "","url": "products/SBL-BLA-3_9ccab75f-bc9e-4800-ad7a-e97e30675f53.jpg"},{"image_id": "35951135097007","media_id": "","url": "products/SBL-BLA-4_0dd0d832-6f82-4503-985f-82e8b9998bfc.jpg"},{"image_id": "35951135490223","media_id": "","url": "products/SBL-BLA-5_8496cca0-f3ee-4c1e-8cd2-20750ee74eca.jpg"},{"image_id": "35951136309423","media_id": "","url": "products/SBL-BLA-6_3f0d908b-eb00-403d-be53-de8e25230a68.jpg"},{"image_id": "35951136702639","media_id": "","url": "products/SBL-BLA-7_d0a33837-b0c5-4781-883a-6b1801d1453d.jpg"},{"image_id": "36008061337775","media_id": "","url": "products/DGN-BLA-1_2e6bfb4f-ad1d-4382-90db-ca801e0b69a0.jpg"},{"image_id": "36008061370543","media_id": "","url": "products/DGN-BLA-2_08a579ce-32ad-4ab7-beab-793916a30a0e.jpg"},{"image_id": "36008061763759","media_id": "","url": "products/DGN-BLA-3_46ba0eff-1cd3-43ab-8e27-e0eef7b68746.jpg"},{"image_id": "36008062156975","media_id": "","url": "products/DGN-BLA-4_fdcf26a2-cbdb-4a5c-b0c2-7c5ba0643c84.jpg"},{"image_id": "36008062222511","media_id": "","url": "products/DGN-BLA-5_ed19aafc-61d6-40f3-b865-17e5ee21e82e.jpg"},{"image_id": "36008062288047","media_id": "","url": "products/DGN-BLA-6_69c04bd1-09c4-4421-885f-d71a23e8e4f4.jpg"},{"image_id": "36008062353583","media_id": "","url": "products/DGN-BLA-7_4aefd6e8-19af-435c-b1b5-27f4cc872699.jpg"},{"image_id": "36009262219439","media_id": "","url": "products/LGN-BLA-1_54a6cdbf-b254-4b4c-a713-c0722418a319.jpg"},{"image_id": "36009262284975","media_id": "","url": "products/LGN-BLA-2_72194e43-2d85-466c-95a9-fd30a8dc619c.jpg"},{"image_id": "36009262645423","media_id": "","url": "products/LGN-BLA-3_e847094d-0964-40f4-ae2e-92ed0639be53.jpg"},{"image_id": "36009262776495","media_id": "","url": "products/LGN-BLA-4_6fdda646-8b4c-4341-b35a-6dcc1022e5c5.jpg"},{"image_id": "36009263038639","media_id": "","url": "products/LGN-BLA-5_9ded84e4-a44c-4664-b847-423b61e62393.jpg"},{"image_id": "36009263136943","media_id": "","url": "products/LGN-BLA-6_f6f130f4-ae46-4166-b19d-ff8b09eef0f2.jpg"},{"image_id": "36009263497391","media_id": "","url": "products/LGN-BLA-7_6531c8a4-ddaf-431a-ab2b-201ac58f18bd.jpg"},{"image_id": "36010294804655","media_id": "","url": "products/LBL-BLA-1_f661fc71-da19-4cba-8bd0-fdc39ceebdda.jpg"},{"image_id": "36010294870191","media_id": "","url": "products/LBL-BLA-2_016b71a9-b121-4b8b-b52a-b32cb9ddc006.jpg"},{"image_id": "36010295361711","media_id": "","url": "products/LBL-BLA-3_f6ff1e67-7a72-4312-ab0d-6d99102836e2.jpg"},{"image_id": "36010295722159","media_id": "","url": "products/LBL-BLA-4_b458d9a6-d06c-48aa-8c1d-1c682a6c4901.jpg"},{"image_id": "36010295754927","media_id": "","url": "products/LBL-BLA-5_70d50b61-6033-4328-8deb-cc36a24fe72e.jpg"},{"image_id": "36010296017071","media_id": "","url": "products/LBL-BLA-6_40c46c0a-03ec-4400-87f0-140f45b87e9f.jpg"},{"image_id": "36010296148143","media_id": "","url": "products/LBL-BLA-7_c491e028-4d88-4397-ad66-e3c6cbc62d6f.jpg"},{"image_id": "36879001288879","media_id": "","url": "files/JT_1_5b47e2be-c7ff-43a3-a747-0aa79e1ffd0b.jpg"},{"image_id": "36879001321647","media_id": "","url": "files/JT_2_5c9d0458-d50c-4e4d-b8a3-61496838fe56.jpg"},{"image_id": "36879001354415","media_id": "","url": "files/JT_3_535e575d-e85f-4b75-ad9d-f292a84453bc.jpg"},{"image_id": "36879001387183","media_id": "","url": "files/JT_4_20547852-1183-46e7-8a95-a3f33db374a4.jpg"},{"image_id": "36879001649327","media_id": "","url": "files/JT_5_0f345a37-25ea-4e61-a55d-702fa42b3b30.jpg"},{"image_id": "36900868817071","media_id": "","url": "files/NT_BLK_1_e39edbf9-901f-4b2c-a2d4-5de28f867f5d.jpg"},{"image_id": "36900868849839","media_id": "","url": "files/NT_BLK_2_534eddc0-dda7-4b83-ba22-52a9ce93f56c.jpg"},{"image_id": "36900868980911","media_id": "","url": "files/NT_BLK_3_e79dfd2a-32a2-4431-966d-02672bd20495.jpg"},{"image_id": "36900869210287","media_id": "","url": "files/NT_BLK_4_7e8ca1b2-d06d-4941-801a-7597db9fc71e.jpg"},{"image_id": "36900869537967","media_id": "","url": "files/NT_BLK_5_54be096f-91a1-4408-b135-b923d9d45bd7.jpg"},{"image_id": "36900869570735","media_id": "","url": "files/NT_BLK_6_f96cb9d3-29d8-4d10-827b-332122394425.jpg"},{"image_id": "36900869832879","media_id": "","url": "files/NT_BLK_7_4ccbcfbe-4a72-43b5-8d2c-f78905666b98.jpg"},{"image_id": "37213133144239","media_id": "","url": "files/Car_Comparison_Chart_d9b298f6-52cb-4422-80b1-689c88dda479.jpg"},]
+            camouflage_product.hide_oos_variant_qty = [{% for variant in product.variants %}{{ variant.inventory_quantity }},{% endfor %}];
+            const hide_oos_variant_qty = camouflage_product.hide_oos_variant_qty || [];            
+            // backward compatibility
+            if (window.hide_oos_t_settings) {
+                window.hide_oos_t_settings.product = camouflage_product;
+            }    
+            window.camouflage_global_config.variant_action = "hide" || window.camouflage_global_config.variant_action;
+            try {                                
+                
+            } catch(error) {
+                console.error(error);
+            }    
+            const runCamouflageInit = () => {
+                if (window.skip_camouflage === true) {
+                    return;
+                }              
+                window.initCamouflage({
+                    ...window.camouflage_global_config,
+                    product: camouflage_product,
+                    selected_or_first_available_variant_id: selected_or_first_available_variant_id,
+                    hide_oos_variant_qty: hide_oos_variant_qty, // not required if variant.inventory_quantity is set
+                    ...product_metafields // sets always_hide, always_show, schedule_hide and always_hide_show_field
+                });
+                window.hide_oos_initiated = true;
+            }            
+            if (typeof window.initCamouflage === "function") {
+                runCamouflageInit();
+            } else {
+                document.addEventListener('hoos:scriptloaded', (event) => {
+                    if (window.CAMOUFLAGEE.script_executed_via_event) return;
+                    if(event.detail && event.detail.currentTime && window.loaded_script_hoos_obj) {
+                        if(window.loaded_script_hoos_obj[event.detail.currentTime]) {
+                            return;
+                        }
+                        window.loaded_script_hoos_obj[event.detail.currentTime] = 1;
+                    }
+                    runCamouflageInit();
+                    window.CAMOUFLAGEE.script_executed_via_event = true;
+                });
+            }
+        })();
+    </script>
+    <!-- END app snippet -->
+    <!-- BEGIN app snippet: swatch-snippet --><!-- END app snippet -->
+    <script id="camouflage-custom-js-global">        
+    </script>
+</div>

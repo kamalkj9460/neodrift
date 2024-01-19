@@ -21,11 +21,13 @@
 
    
 <input id="rzpKey" type="hidden" name="rzpKey" value="rzp_live_Hq9mlLUQIaDq6X">
-  
+{%- if template contains 'cart' or template contains 'checkout' -%}  
 <script src="https://cdn.razorpay.com/static/shopify/analytics.js" gtag-conversion-id="AW-302841715" gtag-conversion-label="tA5MCNve1fMCEPP-s5AB"></script>
 <script src="https://cdn.razorpay.com/static/shopify/magic-rzp.js" data-email="{{ customer.email }}" data-phonenumber="{{ customer.phone }}"></script>
-  
-  
+{% else %}  
+<script type="lazyload_int" data-src="https://cdn.razorpay.com/static/shopify/analytics.js" gtag-conversion-id="AW-302841715" gtag-conversion-label="tA5MCNve1fMCEPP-s5AB"></script>
+<script type="lazyload_int" data-src="https://cdn.razorpay.com/static/shopify/magic-rzp.js" data-email="{{ customer.email }}" data-phonenumber="{{ customer.phone }}"></script>
+{% endif %}
       
 <div id="rzp-spinner-backdrop">
 	<div id="rzp-spinner">

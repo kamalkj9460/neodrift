@@ -9,14 +9,17 @@
 {%- assign text_font_bolder_weight = 'bolder' -%}
 
 {%- unless settings.heading_font.system? -%}
+{% comment %}  
   <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
 {%- endunless -%}
 
 {%- unless settings.text_font.system? -%}
   <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
+{% endcomment %}    
 {%- endunless -%}
 
 <style>
+  {% comment %}  
   {{ settings.heading_font | font_face: font_display: 'swap' }}
   {{ settings.text_font | font_face: font_display: 'swap' }}
 
@@ -33,7 +36,7 @@
   {{ text_font_bold | font_face: font_display: 'swap' }}
   {{ text_font_italic | font_face: font_display: 'swap' }}
   {{ text_font_bold_italic | font_face: font_display: 'swap' }}
-
+  {% endcomment %}  
   :root {
     --default-text-font-size : 15px;
     --base-text-font-size    : {{ settings.base_text_font_size }}px;

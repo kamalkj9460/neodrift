@@ -1,11 +1,18 @@
-<!doctype html>
+  <!doctype html>
 
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
-
-<script async='async' type='text/javascript' src='https://svt.firstbits.com.br/script.js?shop=neodrift-india.myshopify.com'></script>
+    {% render 'wnw-header' %}
+    {% render 'font-css' %}
+    <script
+      type="lazyload_int"
+      data-src="https://svt.firstbits.com.br/script.js?shop=neodrift-india.myshopify.com"
+    ></script>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0"
+    >
     <meta name="theme-color" content="{{ settings.accent_color }}">
 
     {%- capture seo_page_title -%}
@@ -16,13 +23,11 @@
       {%- endif -%}
     {%- endcapture -%}
 
-    
+    <!-- Avada Size Chart Script -->
+    {% include 'avada-sc-setting' %}
+    <!-- /Avada Size Chart Script -->
 
-  <!-- Avada Size Chart Script -->
- {% include 'avada-sc-setting' %}
-  <!-- /Avada Size Chart Script -->
-
-<title>{{- seo_page_title -}}</title>
+    <title>{{- seo_page_title -}}</title>
 
     {%- if page_description -%}
       <meta name="description" content="{{ page_description | escape }}">
@@ -35,8 +40,10 @@
     {%- endif -%}
 
     {%- comment -%}Few prefech to increase performance on commonly used third-parties{%- endcomment -%}
+    {%- comment -%}
     <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
     <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
+    {%- endcomment -%}
     <link rel="preconnect" href="https://cdn.shopify.com">
     <link rel="preconnect" href="https://fonts.shopifycdn.com">
     <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
@@ -48,17 +55,31 @@
     {% render 'css-variables' %}
 
     <!-- starapps_scripts_start -->
-<!-- This code is automatically managed by StarApps Studio -->
-<!-- Please contact support@starapps.studio for any help --><!-- starapps_scripts_end -->
+    <!-- This code is automatically managed by StarApps Studio -->
+    <!-- Please contact support@starapps.studio for any help -->
+    <!-- starapps_scripts_end -->
 
-  <!-- Avada FSB Script -->
- {% include 'avada-fsb-setting' %}
-  <!-- /Avada FSB Script -->
+    <!-- Avada FSB Script -->
+    {% include 'avada-fsb-setting' %}
+    <!-- /Avada FSB Script -->
 
-
-{{ content_for_header }}
-
-    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+    {%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
+      {{ content_for_header }}
+    {%- else -%}
+        {% capture content_for_header2 %}{{ content_for_header }}{% endcapture %}
+        {{ content_for_header2 | replace: ' async="async" ', ' type="lazyload_int" ' | replace: ' defer="defer" ', ' type="lazyload_int" ' | replace: " src=", " data-src="| replace: "DOMContentLoaded", "w3-DOMContentLoaded" | replace: "window.addEventListener('load', asyncLoad, false);", "window.addEventListener('w3-DOMContentLoaded', asyncLoad, false);" | replace: "addEventListener('load', prefetchAssets);", "addEventListener('w3-DOMContentLoaded', prefetchAssets);" | replace: 'type="module" data-src="', 'data-w3-type="module"  type="lazyload_int" data-src="'}}
+        <script>var trekkie=[];trekkie.integrations=!0;window.BOOMR={},window.BOOMR.version=true;</script>
+    {%- endif -%}
+    {% if template contains "index" %}
+    	{% render "index-css" %}
+    {% elsif template contains "collection" %}
+    	{% render "collection-css" %}
+    {% elsif template contains "product" %}
+    	{% render "product-css" %}
+    {% else %}
+    	{% render "all-css" %}
+    {% endif %}
+    <link rel="stylesheet" data-href="{{ 'theme.css' | asset_url }}">
 
     {% render 'microdata-schema' %}
 
@@ -127,34 +148,46 @@
     {%- if request.page_type != 'cart' -%}
       <script>
         (function () {
-          window.onpageshow = function() {
+          window.onpageshow = function () {
             // We force re-freshing the cart content onpageshow, as most browsers will serve a cache copy when hitting the
             // back button, which cause staled data
-            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
-              bubbles: true,
-              detail: {scrollToTop: false}
-            }));
+            document.documentElement.dispatchEvent(
+              new CustomEvent('cart:refresh', {
+                bubbles: true,
+                detail: { scrollToTop: false },
+              })
+            );
           };
         })();
       </script>
     {%- endif -%}
-    <script src="https://cdn.younet.network/main.js"></script>
+    <script type="lazyload_int" data-src="https://cdn.younet.network/main.js"></script>
 
-<meta name="facebook-domain-verification" content="bunuva77f1dvzgt20q7cjqrcg3eq53" />
+    <meta name="facebook-domain-verification" content="bunuva77f1dvzgt20q7cjqrcg3eq53">
 
+    {% if template == 'cart' %}{% include 'revy-bundle-script' %}{% endif %}
 
-  {% if template == 'cart' %}{% include "revy-bundle-script" %}{% endif %}
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ehshav1whu");
-</script>
-
-</head>
-<body class="warehouse--v1 {{template}} {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport">    
+    <script type="lazyload_int">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, 'clarity', 'script', 'ehshav1whu');
+    </script>
+    {% render 'new-app-block' %}
+    {% render 'custom-css' %}
+  </head>
+  <body
+    class="warehouse--v1 {{template}} {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}"
+    data-instant-intensity="viewport"
+  >
     {%- comment -%}Common SVG definitions that we are re-using in several places{%- endcomment -%}
     <svg class="visually-hidden">
       <linearGradient id="rating-star-gradient-half">
@@ -176,8 +209,18 @@
     {% section 'header' %}
 
     <main id="main" role="main">
-      {{ content_for_layout }}
-  {% capture stn_app %}{% include 'station-tabs' %}{% endcapture %}{% if stn_app contains 'Station.Apps' %}{{ stn_app }}{% endif %}
+      {%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
+            	{{ content_for_layout }}
+      {%- else -%}
+          {% capture content_for_layout2 %}{{ content_for_layout }}{% endcapture %}
+          {{ content_for_layout2 
+          | replace: 'preload="metadata"', 'id="myVideo2" preload="none"' 
+          | replace: 'poster=', 'data-poster='
+          | replace: 'autoplay', 'id="myVideo" preload="none"'
+          }} 
+      {%- endif -%}
+      {% capture stn_app %}{% include 'station-tabs' %}{% endcapture -%}
+      {%- if stn_app contains 'Station.Apps' %}{{ stn_app }}{% endif %}
     </main>
 
     {% section 'static-text-with-icons' %}
@@ -186,98 +229,120 @@
     <ul hidden>
       <li id="a11y-new-window-message">{{ 'general.accessibility.new_window' | t }}</li>
     </ul>
-  {% render 'banana-stand-footer' %}
-<script type="text/javascript" async="" src="https://reviews.enormapps.com/product-reviews/frontend/embed.js"></script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-<!--    // Dewang Edits   -->
-    
-    
-    <script type="text/javascript"> 
-    	let cushion_page = document.getElementsByClassName("collection__title");
-      	for(let i=0 ; i<cushion_page.length ; i++){
-          
-// ========= *DO NOT CHANGE make sure its the exact word* - "Car Covers" ==========
-          
-          if(cushion_page[i].innerHTML == "Car Covers"){  
-        	let filter = document.getElementsByClassName("collection__filter-group")
-//          console.log("Filterrrrr=", filter[0])
-          	console.log("innnnnnnnnnnnnnnnnn")
-          }
-          
-// ========= *DO NOT CHANGE make sure its the exact word* - "7D Floor Mats" ==========
-          else{
-          	console.log("outttttttttt")
-            let filter = document.getElementsByClassName("collection__filter-group")
-            setInterval(function () {filter[0].style.display = "none"}, 1000);
+    {% capture banana-stand-footer-2 %}{% render 'banana-stand-footer' %}{% endcapture %}
+    {{ banana-stand-footer-2 | replace: '<script type="application/javascript"', '<script type="lazyload_int"' }}
+    <script
+      type="lazyload_int"
+      data-src="https://reviews.enormapps.com/product-reviews/frontend/embed.js"
+    ></script>
 
-          }
-      	}
-      
-      
-      
-      	let offer_nav = document.getElementsByClassName("nav-bar__link")
-        let offer_mobile_nav = document.getElementsByClassName("mobile-menu__nav-link")
+    <!-- // Dewang Edits -->
 
-        for(let i=0 ; i<offer_nav.length ; i++){
-        	if(offer_nav[i].innerHTML == "Offers" ){
-            	offer_nav[i].id = "offer_highlight"
-            }      
-          
-            if(offer_mobile_nav[i].innerHTML == "Offers"){
-				offer_mobile_nav[i].id = "offer_highlight"
-            }
-          
+    <script type="text/javascript">
+      let cushion_page = document.getElementsByClassName('collection__title');
+      for (let i = 0; i < cushion_page.length; i++) {
+        // ========= *DO NOT CHANGE make sure its the exact word* - "Car Covers" ==========
+
+        if (cushion_page[i].innerHTML == 'Car Covers') {
+          let filter = document.getElementsByClassName('collection__filter-group');
+          //          console.log("Filterrrrr=", filter[0])
+          console.log('innnnnnnnnnnnnnnnnn');
         }
-      
-      
-      let myGreeting = () => {
-		if(document.getElementsByClassName("fera-productReviews-writeReviewLink")){
-        	document.getElementsByClassName("fera-productReviews-writeReviewLink")[0].innerHTML = "Write a Review"
-           
+
+        // ========= *DO NOT CHANGE make sure its the exact word* - "7D Floor Mats" ==========
+        else {
+          console.log('outttttttttt');
+          let filter = document.getElementsByClassName('collection__filter-group');
+          setInterval(function () {
+            filter[0].style.display = 'none';
+          }, 1000);
         }
       }
-       	
-      setTimeout(myGreeting, 7000);
 
-      
-      
+      let offer_nav = document.getElementsByClassName('nav-bar__link');
+      let offer_mobile_nav = document.getElementsByClassName('mobile-menu__nav-link');
+
+      for (let i = 0; i < offer_nav.length; i++) {
+        if (offer_nav[i].innerHTML == 'Offers') {
+          offer_nav[i].id = 'offer_highlight';
+        }
+
+        if (offer_mobile_nav[i].innerHTML == 'Offers') {
+          offer_mobile_nav[i].id = 'offer_highlight';
+        }
+      }
+
+      let myGreeting = () => {
+        if (document.getElementsByClassName('fera-productReviews-writeReviewLink')) {
+          document.getElementsByClassName('fera-productReviews-writeReviewLink')[0].innerHTML = 'Write a Review';
+        }
+      };
+
+      setTimeout(myGreeting, 7000);
     </script>
 
     <script type="text/javascript">
-        function pauseVideo() {
-          //alert("pause");
-            $('.theVideo').trigger('pause');
-        }
+      function pauseVideo() {
+        //alert("pause");
+        $('.theVideo').trigger('pause');
+      }
+    </script>
 
-</script>
-  
+    {% if content_for_header contains 'fastbundle.co' %}
+      {% render 'fast_bundle_service' %}
+    {% endif %}
 
+    {% include 'revy-bundle-script' %}
 
-{% if content_for_header contains 'fastbundle.co' %}
-    {% render 'fast_bundle_service' %}
-{% endif %}
+    {% render 'magicCheckoutScript' %}
+    <!-- PickyStory snippet "main_widget_script", do not modify. Safe to remove after the app is uninstalled -->
+    {% if content_for_header contains 'pickystory' %}
+      <script type="lazyload_int" data-src="https://cdn.pickystory.com/widget/dist/latest/pickystory-widget.min.js"></script>
+    {% endif %}
+    <!-- PickyStory end snippet "main_widget_script" -->
 
-  {% include 'revy-bundle-script' %}
-
-  
-  {% render 'magicCheckoutScript' %}
-  <!-- PickyStory snippet "main_widget_script", do not modify. Safe to remove after the app is uninstalled -->
-  {% if content_for_header contains 'pickystory' %}
-    <script defer src="https://cdn.pickystory.com/widget/dist/latest/pickystory-widget.min.js"></script>
-  {% endif %}
-  <!-- PickyStory end snippet "main_widget_script" -->
-
-	
-
-
-{% render 'easyvideo', product: product %}
-</body>
+    {% render 'easyvideo', product: product %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var videos = document.querySelectorAll('#myVideo2');
+            
+            videos.forEach(function (video) {
+                video.removeAttribute('preload');
+                video.setAttribute('preload', 'meatadata');
+            });
+        });
+    </script>
+    <script >
+        document.addEventListener('DOMContentLoaded', function () {
+            var videos = document.querySelectorAll('#myVideo');
+            
+            videos.forEach(function (video) {
+                video.removeAttribute('preload');
+                video.setAttribute('autoplay', true);
+            });
+        });
+    </script>  
+    {% comment %}to set posters{% endcomment %}
+    <script type="lazyload_int">
+      document.addEventListener('DOMContentLoaded', function () {
+          var videos = document.querySelectorAll('video[data-poster]');
+          videos.forEach(function (video) {
+              var dataPosterValue = video.getAttribute('data-poster');
+              video.setAttribute('poster', dataPosterValue);
+              video.removeAttribute('data-poster');
+          });
+      });
+    </script>  
+     <script>
+      var h1Element = document.querySelector('.product-meta__title');
+      if (h1Element) {
+          h1Element.innerText = window.ShopifyAnalytics.meta.product.variants[0].name;
+      } else {
+          console.error('Element not found');
+      }
+      </script>     
+    
+    {% render 'new-footer-app-block' %}
+    {% render 'wnw-footer' %}
+  </body>
 </html>

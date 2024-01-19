@@ -1,7 +1,7 @@
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<link rel="stylesheet" data-href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script type="lazyload_int" data-src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 <section class="section section--tight section--testimonial" data-section-id="{{ section.id }}" data-section-type="text-with-icons" style="background-color:{{ section.settings.bg_color }};">
   <div class="container container--flush">
@@ -11,7 +11,7 @@
         <div class="testimonial-hub">
           <div class="test-box" style="background-color:{{ block.settings.box_color }};">
             <div class="test-star">
-              <img src="{{ block.settings.review_star | img_url:'100x19' }}" width="100%" height="100%">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="{{ block.settings.review_star | img_url:'100x19' }}" width="100%" height="100%">
             </div>
             <div class="test-name">
               {{ block.settings.review_name }}
@@ -23,7 +23,7 @@
           <div class="test-bottom-box">
             <div class="test-left">
               <div class="test-image">
-                <img src="{{ block.settings.review_img | img_url:'grande' }}" width="100%" height="100%">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="{{ block.settings.review_img | img_url:'grande' }}" width="100%" height="100%">
               </div>
             </div>
             <div class="test-right">

@@ -1,0 +1,61 @@
+<!-- BEGIN app block: shopify://apps/variant-descriptions-king/blocks/starapps-vdk-embed/64ff6e50-a483-478c-8000-9738548f9c28 -->
+<script type="lazyload_int">
+    window.vdkData = function() {return {"shop":{"app_version":4},"app_setting":{"accordion_selector":"H6","heading_color":"#000000","heading_bg_color":"#EDEDED","layout":"bordered","title_case":"uppercase","collapse_icon":"plus","border_color":"#8E8E8E","title_font_size":"Auto","collection_accordion_enable":false,"default_open":false,"collection_description_selector":null,"tab_display_setting":{"on_desktop":{"status":true,"comp_width":1024},"on_tablet":{"status":false,"comp_width":375},"on_mobile":{"status":false,"comp_width":0}},"enabled_pages":null,"animation_ms":"300","custom_pages_selector":".description_king, .starapps_description","allow_multiple_descriptions":true,"allow_unoptimized_variant_selection":false,"display_logs":false,"custom_css":"","scroll_to_view":true,"migration_version":"1.4","json_data_selector":"","app_installation_id":"gid:\/\/shopify\/AppInstallation\/353578057903"},"theme_setting":{"custom_css":"","description_selector":".product-block-list__item--description .rte\r\n","custom_pages_selector":".rte, #page, .entry-content, .container .page, .container .user-content, .rte-content, #rte, .rich-text, .rte-page, .Rte, .page__wrapper, .bottompad-section\u003ediv, #MainContent .page"}};}
+</script>
+<script type="lazyload_int" data-src="https://cdn.shopify.com/extensions/3fe5a994-6cbd-410a-96af-8a8b66a78906/0.9.0/assets/variant-description-king.min.js"></script>
+<!-- END app app block -->
+<!-- BEGIN app block: shopify://apps/variant-title-king/blocks/starapps-vtk-embed/b9b7a642-58c3-4fe1-8f1b-ed3e502da04b -->
+<script type="lazyload_int">
+    window.vtkData = function() {return {"shop":{"enable":true,"default_language":"en"},"app_setting":{"template":"{product_title} {variant_name}","title_selector":null,"template_compiled":["{product_title}","{variant_name}"],"value_seperator":"{space}-{space}","products_updated":true,"collection_title_selector":"","products_deleted_at":null},"product_options":[]};}
+</script>
+<script type="lazyload_int" data-src="https://cdn.shopify.com/extensions/ad30a82e-cd71-41c8-a455-ffdf51ffa0c7/variant-title-king-1/assets/variant-title-king.min.js"></script>
+<!-- END app app block -->
+<script type="lazyload_int" data-src="https://cdn.shopify.com/extensions/b1f9f5d2-e22f-433d-8d01-c106a53ee206/selleasy-7/assets/lb-upsell.js"></script>
+{% comment %}
+<!-- BEGIN app block: shopify://apps/s-request-a-quote-hide-price/blocks/embed-app/dac9aba2-251e-4c25-abc3-9fc57dbf7885 -->    
+<style type="text/css" id="ify-style-remove"></style>
+<style type="text/css">.ify-hide{display:none;}</style>
+<link rel="preload" href="https://cdn.shopify.com/extensions/6756906e-0cb4-47e7-ab48-672146d708ae/s-request-a-quote-hide-price-12/assets/storeify-requestaquote-styles.css" as="style">
+<link href="//cdn.shopify.com/extensions/6756906e-0cb4-47e7-ab48-672146d708ae/s-request-a-quote-hide-price-12/assets/storeify-requestaquote-styles.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript">
+    var storeifyRequestaquote = storeifyRequestaquote || {};
+    storeifyRequestaquote.app_enable = 1; 
+    storeifyRequestaquote.locale = "en";
+    storeifyRequestaquote.shop_domain = "www.neodrift.in";
+    storeifyRequestaquote.shop_url = "https:\/\/www.neodrift.in";
+    storeifyRequestaquote.collection = {
+        id : '{{ collection.id }}',
+        handle : '{{ collection.handle }}',
+    };
+    storeifyRequestaquote.product = {{ product | json }}
+    storeifyRequestaquote.product.options = {{ product.options_with_values | json }};
+    {% for variant in product.variants %}                                                                            
+        storeifyRequestaquote.product.variants[{{index}}].inventory_management = '{{ variant.inventory_management }}';
+        storeifyRequestaquote.product.variants[{{index}}].inventory_quantity = {{ variant.inventory_quantity }};
+        storeifyRequestaquote.product.variants[{{index}}].inventory_policy = '{{ variant.inventory_policy }}';      
+    {% endfor %}              
+                  
+    storeifyRequestaquote.product.collection = {{ product.collections | map: 'id' | json }};        
+    storeifyRequestaquote.page = {
+        type : '{{ template.name }}',
+        path : '{{ request.path }}',
+    };
+    storeifyRequestaquote.money_format = '₹ {% raw %}{{amount}}{% endraw %}';
+    storeifyRequestaquote.storeify_requestaquote_json = "/apps/request-a-quote/params";
+    storeifyRequestaquote.root_url = '/';
+    storeifyRequestaquote.lang = {"btn_addquote":"Add to Quote","call_for_price":"Request a Quote","btn_view":"View Quote","btn_continue":"Continue Shop","add_title":"Add \"{{product}}\" to quote","tbl_name":"Name","tbl_sku":"Sku","tbl_option":"Option","tbl_qty":"QTY","quote_empty":"Your quote is currently empty.","your_price":"Your Price","old_price":"Price","print":"Print PDF","total":"Total","btn_see_price":"Login to see price","draft_order":"Draft Order","date":"Date","status":"Status","view":"View","quote_history":"Quote history","load_more":"Load more \u003e\u003e","subtotal":"Subtotal","total_tax":"Total Tax","excl_shipping":"(Excl. Shipping)","excl_tax_shipping":"(Excl. Tax \u0026 Shipping)","input_required":"This field is required.","input_email":"Email Address is invalid: Please enter a valid email address.","search_product":"Search product","search_no_result":"No results found for “{{search_text}}”. Check the spelling or use a different word or phrase.","content_pdf":"PDF Content"};     
+    storeifyRequestaquote.show_input_price = 0;    
+    storeifyRequestaquote.hide_variants_outofstock = 0;    
+    storeifyRequestaquote.search_product = 0;     
+    storeifyRequestaquote.btn_cart_to_quote = 0;
+    storeifyRequestaquote.callbackTracking = function(data){  };
+</script>
+<!-- ======================    Footer   ==========================  -->  
+<script src="https://code.jquery.com/jquery-2.2.4.js" defer></script>  
+<script src="https://cdn.shopify.com/extensions/6756906e-0cb4-47e7-ab48-672146d708ae/s-request-a-quote-hide-price-12/assets/jquery.validate.min.js" defer></script>
+<script src="https://cdn.shopify.com/extensions/6756906e-0cb4-47e7-ab48-672146d708ae/s-request-a-quote-hide-price-12/assets/additional-methods.min.js" defer></script>  
+<script src="https://quote.storeify.app/js/stores/neodrift-india.myshopify.com/storeify-requestaquote-params.js?v=1692612150" defer></script>  
+<script src="https://cdn.shopify.com/extensions/6756906e-0cb4-47e7-ab48-672146d708ae/s-request-a-quote-hide-price-12/assets/storeify-requestaquote-v2-mode-0.js" defer></script>  
+<!--end status-->
+<!-- END app app block -->
+{% endcomment %}
